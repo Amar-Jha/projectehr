@@ -56,7 +56,7 @@
         "fhirServerUrl": {
             "type": "string",
             "metadata": {
-                "description": "https://frt-ehr.fhir.azurehealthcareapis.com/metadata"
+                "description": "this is description"
             }
         },
         "repositoryUrl": {
@@ -93,7 +93,7 @@
         "hostingPlanName": "[parameters('ehrdashbord')]",
         "applicationInsightsName": "[parameters('ehrdashbord')]",
         "storageAccountName": "[replace(concat(toLower(parameters('storageaccountproje9ab4')), 'sa'),'-','')]",
-        "storageAccountid": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
+        "storageAccountid": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', variables('storageaccountproje9ab4'))]",
         "aadAudience": "[if(empty(parameters('aadAudience')),parameters('fhirServerUrl'),parameters('aadAudience'))]"
     },
     "resources": [
@@ -109,7 +109,7 @@
             "sku": {
                 "name": "Standard_LRS",
                 "tier": "Standard"
-                "[parameters('storageAccountType')]"
+                "[parameters('Microsoft.Storage/storageAccounts')]"
             },
             "resources": [
                 {
@@ -117,7 +117,7 @@
                   "apiVersion": "2018-03-01-preview",
                   "name": "[concat('default/', 'fhirimport')]",
                   "dependsOn": [
-                    "[variables('storageAccountName')]"
+                    "[variables('storageaccountproje9ab4')]"
                   ],
                   "properties": {
                     "publicAccess": "None"
@@ -128,7 +128,7 @@
                     "apiVersion": "2018-03-01-preview",
                     "name": "[concat('default/', 'fhirrejected')]",
                     "dependsOn": [
-                      "[variables('storageAccountName')]"
+                      "[variables('storageaccountproje9ab4')]"
                     ],
                     "properties": {
                       "publicAccess": "None"
