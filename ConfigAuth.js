@@ -63,15 +63,7 @@ class ConfigAuth {
             return;
         }
 
-        let refreshUrl = "/.auth/refresh";
-        $.ajax(refreshUrl)
-            .done(function () {
-                console.log("Token refresh completed successfully.");
-                callback()
-            })
-            .fail(function () {
-                console.log("Token refresh failed. See application logs for details.");
-            });
+      return;
     }
 
     getFhirServerAccessInfo(callback) {
