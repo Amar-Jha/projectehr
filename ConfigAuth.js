@@ -62,7 +62,7 @@ class ConfigAuth {
             callback();
             return;
         }
-
+        callback();
       return;
     }
 
