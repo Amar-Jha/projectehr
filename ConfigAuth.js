@@ -13,6 +13,7 @@ class ConfigAuth {
                 authConfig.fhirServerUrl = data.FhirServerUrl;
                 callback(authConfig.fhirServerUrl);
             });
+             
         }
     }
 
@@ -48,12 +49,13 @@ class ConfigAuth {
     updateAuthInfo(callback)
     {
         var authConfig = this;
-        authConfig.refreshTokens(function () {
-            $.getJSON('/.auth/me', function (authData, status) {
-                authConfig.authInfo = authData;
-                callback();
-            });
-        });
+          callback();
+       // authConfig.refreshTokens(function () {
+        //   $.getJSON('/.auth/me', function (authData, status) {
+         //       authConfig.authInfo = authData;
+          //      callback();
+          //  });
+      //  });
     }
 
     refreshTokens(callback) {
