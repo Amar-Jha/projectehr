@@ -8,7 +8,7 @@ class AboutMeModule {
         var aboutMe = this;
         aboutMe.anchor.html('Loading...');
         aboutMe.configAuth.getAboutMeInfo(function (userId, fhirServerUrl, accessToken) {
-            const markup = '
+            const markup = "
                 <h2>Information about the signed in user</h2>
                 <table>
                     <tr>
@@ -25,7 +25,7 @@ class AboutMeModule {
                             </form>
                         </td>
                     </tr>
-                </table>'
+                </table>"
             ;
 
             aboutMe.anchor.html(markup);
