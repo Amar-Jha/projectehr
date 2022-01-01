@@ -1,5 +1,5 @@
 {
-    "FhirServerUrl": "https://frt-ehr.fhir.azurehealthcareapis.com/metadata",
+    "FhirServerUrl": "https://frt-ehr.fhir.azurehealthcareapis.com",
     "SmartOnFhirApps": [
         {
             "DisplayName": "Growth Chart",
