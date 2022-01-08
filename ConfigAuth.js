@@ -49,13 +49,12 @@ class ConfigAuth {
     updateAuthInfo(callback)
     {
         var authConfig = this;
-          callback();
-       // authConfig.refreshTokens(function () {
-        //   $.getJSON('/.auth/me', function (authData, status) {
-         //       authConfig.authInfo = authData;
-          //      callback();
-          //  });
-      //  });
+        authConfig.refreshTokens(function () {
+            $.getJSON('/.auth/me', function (authData, status) {
+                authConfig.authInfo = authData;
+                callback();
+            });
+        });
     }
 
     refreshTokens(callback) {
@@ -64,10 +63,18 @@ class ConfigAuth {
             callback();
             return;
         }
-        callback();
-      return;
-    }
 
+        let refreshUrl = "/.auth/refresh";
+        $.ajax(refreshUrl)
+            .done(function () {
+                console.log("Token refresh completed successfully.");
+                callback()
+            })
+            .fail(function () {
+                console.log("Token refresh failed. See application logs for details.");
+            });
+    }
+    
     getFhirServerAccessInfo(callback) {
         var authConfig = this;
         authConfig.getFhirServerUrl(function (fhirServerUrl) {
