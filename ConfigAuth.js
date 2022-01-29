@@ -33,20 +33,18 @@ class ConfigAuth {
         });
     }
 
-
-    getAccessToken(callback) {
+ getAccessToken(callback) {
         var authConfig = this;
-   
-        callback(access_token);
         if (authConfig.authInfo && (new Date(authConfig.authInfo[0].expires_on) > new Date(Date.now() + 60000))) {
-          callback(access_token);
-       }
-       else {
+            callback(authConfig.authInfo[0].access_token);
+        }
+        else {
             authConfig.updateAuthInfo(function() {
-                callback(access_token);
+                callback(authConfig.authInfo[0].access_token);
             });
         }
     }
+
 
     updateAuthInfo(callback)
     {
